@@ -170,3 +170,194 @@ class Gerente extends Empleado {
      return salario + bono;
  }
 }
+
+//==========================
+//6️⃣ Animal y Perro
+//==========================
+class Animal {
+public void hacerSonido() {
+   System.out.println("El animal hace sonido");
+}
+}
+
+class Perro extends Animal {
+@Override
+public void hacerSonido() {
+   System.out.println("El perro ladra");
+}
+}
+
+//==========================
+//7️⃣ Vehiculo y Moto
+//==========================
+class Vehiculo {
+protected String marca;
+protected int velocidad;
+
+public Vehiculo(String marca, int velocidad) {
+   this.marca = marca;
+   this.velocidad = velocidad;
+}
+}
+
+class Moto extends Vehiculo {
+private int cilindrada;
+
+public Moto(String marca, int velocidad, int cilindrada) {
+   super(marca, velocidad);
+   this.cilindrada = cilindrada;
+}
+
+public void mostrarInfo() {
+   System.out.println("Marca: " + marca + ", Velocidad: " + velocidad + ", Cilindrada: " + cilindrada);
+}
+}
+
+//==========================
+//8️⃣ Figura y Rectangulo y Circulo
+//==========================
+class Figura {
+public double calcularArea() {
+   return 0;
+}
+}
+
+class Rectangulo extends Figura {
+private double base, altura;
+
+public Rectangulo(double base, double altura) {
+   this.base = base;
+   this.altura = altura;
+}
+
+@Override
+public double calcularArea() {
+   return base * altura;
+}
+}
+
+class Circulo extends Figura {
+private double radio;
+
+public Circulo(double radio) {
+   this.radio = radio;
+}
+
+@Override
+public double calcularArea() {
+   return Math.PI * radio * radio;
+}
+}
+
+//==========================
+//9️⃣ Libro y LibroDigital
+//==========================
+class Libro {
+protected String titulo, autor;
+
+public Libro(String titulo, String autor) {
+   this.titulo = titulo;
+   this.autor = autor;
+}
+
+public void mostrarInfo() {
+   System.out.println("Titulo: " + titulo + ", Autor: " + autor);
+}
+}
+
+class LibroDigital extends Libro {
+private double tamanioMB;
+
+public LibroDigital(String titulo, String autor, double tamanioMB) {
+   super(titulo, autor);
+   this.tamanioMB = tamanioMB;
+}
+
+@Override
+public void mostrarInfo() {
+   super.mostrarInfo();
+   System.out.println("Tamaño: " + tamanioMB + " MB");
+}
+}
+
+//==========================
+//🔟 SISTEMA DE FACTURACIÓN
+//==========================
+class Cliente {
+private String nombre;
+private String nit;
+
+public Cliente(String nombre, String nit) {
+   this.nombre = nombre;
+   this.nit = nit;
+}
+
+public String getNombre() {
+   return nombre;
+}
+
+public String getNit() {
+   return nit;
+}
+}
+
+class Factura {
+protected int numero;
+protected Cliente cliente;
+protected double total;
+
+public Factura(int numero, Cliente cliente, double total) {
+   this.numero = numero;
+   this.cliente = cliente;
+   this.total = total;
+}
+
+public double calcularTotal() {
+   return total;
+}
+
+public void mostrar() {
+   System.out.println("Factura: " + numero);
+   System.out.println("Cliente: " + cliente.getNombre());
+   System.out.println("Total: Q" + calcularTotal());
+}
+}
+
+class FacturaContado extends Factura {
+private double descuento;
+
+public FacturaContado(int numero, Cliente cliente, double total, double descuento) {
+   super(numero, cliente, total);
+   this.descuento = descuento;
+}
+
+@Override
+public double calcularTotal() {
+   double totalFinal = total - descuento;
+   if (totalFinal < 0) totalFinal = 0;
+   return totalFinal;
+}
+}
+
+class FacturaCredito extends Factura {
+private double recargo;
+private int cuotas;
+
+public FacturaCredito(int numero, Cliente cliente, double total, double recargo, int cuotas) {
+   super(numero, cliente, total);
+   this.recargo = recargo;
+   this.cuotas = cuotas;
+}
+
+@Override
+public double calcularTotal() {
+   double totalFinal = total + recargo;
+   if (totalFinal < 0) totalFinal = 0;
+   return totalFinal;
+}
+
+public void mostrarCuotas() {
+   System.out.println("Cuotas: " + cuotas);
+   System.out.println("Pago por cuota: Q" + (calcularTotal() / cuotas));
+}
+}
