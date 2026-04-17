@@ -418,3 +418,17 @@ public static void main(String[] args) {
  fcr.mostrarCuotas();
 }
 }
+/*
+EXPLICACIÓN:
+
+En este trabajo apliqué herencia creando clases padre e hijas.
+Utilicé @Override para modificar métodos como calcularTotal, mostrar y retirar.
+También utilicé super para reutilizar constructores y métodos de la clase padre.
+
+Casos de prueba:
+- Sobregiro en cuenta
+- Cálculo de áreas
+- Facturas con descuento y recargo
+- Validación de valores negativos
+
+*/
