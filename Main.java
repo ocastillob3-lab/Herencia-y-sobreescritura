@@ -361,3 +361,60 @@ public void mostrarCuotas() {
    System.out.println("Pago por cuota: Q" + (calcularTotal() / cuotas));
 }
 }
+
+//==========================
+//MAIN (PRUEBAS)
+//==========================
+public class Main {
+public static void main(String[] args) {
+
+ // 1
+ Persona p = new Persona("Oscar", 20);
+ Docente d = new Docente("Luis", 40, "Programacion");
+ Estudiante e = new Estudiante("Ana", 22, "2025-123");
+ p.mostrar(); d.mostrar(); e.mostrar();
+
+ // 2
+ CuentaCorriente cc = new CuentaCorriente(500, 200);
+ cc.retirar(600);
+
+ // 3
+ ProductoPerecedero prod = new ProductoPerecedero("Leche", "10/10/2026");
+ prod.estaVencido();
+
+ // 4
+ Bus bus = new Bus(40, "Zona 1");
+ bus.descripcion();
+
+ // 5
+ Gerente g = new Gerente("Carlos", 3000, 500);
+ System.out.println("Salario: " + g.calcularSalario());
+
+ // 6
+ Perro perro = new Perro();
+ perro.hacerSonido();
+
+ // 7
+ Moto m = new Moto("Honda", 120, 250);
+ m.mostrarInfo();
+
+ // 8
+ Rectangulo r = new Rectangulo(5, 4);
+ Circulo c = new Circulo(3);
+ System.out.println("Area Rectangulo: " + r.calcularArea());
+ System.out.println("Area Circulo: " + c.calcularArea());
+
+ // 9
+ LibroDigital ld = new LibroDigital("Java", "Autor X", 5.5);
+ ld.mostrarInfo();
+
+ // 10
+ Cliente cliente = new Cliente("Juan", "123");
+ FacturaContado fc = new FacturaContado(1, cliente, 1000, 100);
+ fc.mostrar();
+
+ FacturaCredito fcr = new FacturaCredito(2, cliente, 1000, 200, 4);
+ fcr.mostrar();
+ fcr.mostrarCuotas();
+}
+}
